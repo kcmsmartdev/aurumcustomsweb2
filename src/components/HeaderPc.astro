@@ -1,0 +1,639 @@
+---
+// Navbar.astro - Aurum Customs
+// Transparent, glass-effect, responsive navbar with dropdown
+---
+
+<header id="navbar" class="navbar">
+  <div class="navbar-inner">
+    <!-- Logo -->
+    <a href="/" class="logo-link" aria-label="Aurum Customs - Inicio">
+      <div class="logo-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="16,2 30,10 30,22 16,30 2,22 2,10" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+          <polygon points="16,7 25,12 25,20 16,25 7,20 7,12" fill="url(#goldGradFill)" opacity="0.15"/>
+          <text x="16" y="21" text-anchor="middle" font-family="serif" font-size="11" font-weight="bold" fill="url(#goldGrad)">A</text>
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f0c040"/>
+              <stop offset="50%" stop-color="#d4a017"/>
+              <stop offset="100%" stop-color="#b8860b"/>
+            </linearGradient>
+            <linearGradient id="goldGradFill" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f0c040"/>
+              <stop offset="100%" stop-color="#d4a017"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">AURUM</span>
+        <span class="logo-sub">CUSTOMS</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="desktop-nav" role="navigation" aria-label="Navegación principal">
+      <a href="/" class="nav-link">Inicio</a>
+      <a href="/sobre-nosotros" class="nav-link">Sobre Nosotros</a>
+
+      <!-- Servicios Dropdown -->
+      <div class="dropdown-wrapper" role="none">
+        <button class="nav-link dropdown-trigger" aria-haspopup="true" aria-expanded="false" id="services-btn">
+          Servicios
+          <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu" role="menu" aria-labelledby="services-btn">
+          <div class="dropdown-inner">
+            <a href="/servicios/agenciamiento-aduanas" class="dropdown-item" role="menuitem">
+              <span class="item-icon">⬡</span>
+              <div>
+                <span class="item-title">Agenciamiento de Aduanas</span>
+                <span class="item-desc">Especializado en comercio internacional</span>
+              </div>
+            </a>
+            <a href="/servicios/asesoria-consultoria" class="dropdown-item" role="menuitem">
+              <span class="item-icon">◈</span>
+              <div>
+                <span class="item-title">Asesoría y Consultoría</span>
+                <span class="item-desc">Comercio Exterior especializado</span>
+              </div>
+            </a>
+            <a href="/servicios/complementarios" class="dropdown-item" role="menuitem">
+              <span class="item-icon">◇</span>
+              <div>
+                <span class="item-title">Servicios Complementarios</span>
+                <span class="item-desc">Soluciones a su disposición</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="/tarifario" class="nav-link">Tarifario</a>
+      <a href="/contacto" class="nav-link">Contacto</a>
+      <a href="/tracking" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-right:6px">
+          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="7" cy="7" r="2" fill="currentColor"/>
+          <line x1="7" y1="1.5" x2="7" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="7" y1="11" x2="7" y2="12.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="1.5" y1="7" x2="3" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="11" y1="7" x2="12.5" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        Tracking
+      </a>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-nav" role="navigation" aria-label="Menú móvil">
+      <a href="/" class="mobile-link">Inicio</a>
+      <a href="/sobre-nosotros" class="mobile-link">Sobre Nosotros</a>
+
+      <!-- Mobile Services Accordion -->
+      <div class="mobile-accordion">
+        <button class="mobile-link accordion-btn" id="mobile-services-btn" aria-expanded="false" aria-controls="mobile-services">
+          Servicios
+          <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content" id="mobile-services" aria-hidden="true">
+          <a href="/servicios/agenciamiento-aduanas" class="mobile-sub-link">Agenciamiento de Aduanas Especializado</a>
+          <a href="/servicios/asesoria-consultoria" class="mobile-sub-link">Asesoría y Consultoría en Comercio Exterior</a>
+          <a href="/servicios/complementarios" class="mobile-sub-link">Servicios Complementarios a su Disposición</a>
+        </div>
+      </div>
+
+      <a href="/tarifario" class="mobile-link">Tarifario</a>
+      <a href="/contacto" class="mobile-link">Contacto</a>
+      <a href="/tracking" class="mobile-cta">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-right:6px;flex-shrink:0">
+          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="7" cy="7" r="2" fill="currentColor"/>
+          <line x1="7" y1="1.5" x2="7" y2="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="7" y1="11" x2="7" y2="12.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="1.5" y1="7" x2="3" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="11" y1="7" x2="12.5" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        Tracking
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* ── Variables ── */
+  :root {
+    --gold-light:   #f0c040;
+    --gold:         #d4a017;
+    --gold-dark:    #b8860b;
+    --gold-subtle:  rgba(212, 160, 23, 0.12);
+    --gold-border:  rgba(212, 160, 23, 0.25);
+    --text-primary: #f5f0e8;
+    --text-muted:   rgba(245, 240, 232, 0.55);
+    --glass-bg:     rgba(8, 8, 14, 0.45);
+    --glass-solid:  rgba(8, 8, 14, 0.92);
+    --blur:         saturate(180%) blur(16px);
+    --nav-h:        72px;
+    --transition:   cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Base ── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Navbar Shell ── */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: transparent;
+    transition: background 0.4s var(--transition),
+                border-color 0.4s var(--transition),
+                box-shadow 0.4s var(--transition);
+    border-bottom: 1px solid transparent;
+  }
+
+  .navbar.scrolled {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    border-bottom-color: var(--gold-border);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 0 0.5px var(--gold-border);
+  }
+
+  .navbar.menu-open {
+    background: var(--glass-solid);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+    border-bottom-color: var(--gold-border);
+  }
+
+  /* ── Inner Row ── */
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-h);
+    padding: 0 clamp(1rem, 4vw, 3rem);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── Logo ── */
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 0 8px rgba(212, 160, 23, 0.4));
+    transition: filter 0.3s;
+  }
+  .logo-link:hover .logo-icon {
+    filter: drop-shadow(0 0 14px rgba(212, 160, 23, 0.7));
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-name {
+    font-family: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-sub {
+    font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
+    font-size: 0.48rem;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 2px;
+    padding-left: 2px;
+  }
+
+  /* ── Desktop Nav ── */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 14px;
+    font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.25s, background 0.25s;
+    white-space: nowrap;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; left: 50%; right: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-light), var(--gold));
+    transition: left 0.3s var(--transition), right 0.3s var(--transition);
+    border-radius: 1px;
+  }
+
+  .nav-link:hover {
+    color: var(--gold-light);
+    background: var(--gold-subtle);
+  }
+  .nav-link:hover::after {
+    left: 14px; right: 14px;
+  }
+
+  .nav-link.active {
+    color: var(--gold-light);
+  }
+  .nav-link.active::after {
+    left: 14px; right: 14px;
+  }
+
+  /* ── CTA Button ── */
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    padding: 9px 20px;
+    margin-left: 8px;
+    font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #0a0804;
+    text-decoration: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%, var(--gold-dark) 100%);
+    box-shadow: 0 2px 16px rgba(212,160,23,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(212,160,23,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+    filter: brightness(1.08);
+  }
+  .nav-cta:active { transform: translateY(0); }
+
+  /* ── Chevron ── */
+  .chevron {
+    transition: transform 0.3s var(--transition);
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+  .dropdown-wrapper:hover .chevron,
+  .dropdown-trigger[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+
+  /* ── Dropdown ── */
+  .dropdown-wrapper {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    width: 340px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s var(--transition), transform 0.25s var(--transition);
+  }
+
+  .dropdown-wrapper:hover .dropdown-menu,
+  .dropdown-wrapper:focus-within .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-inner {
+    background: rgba(10, 8, 6, 0.88);
+    -webkit-backdrop-filter: saturate(200%) blur(20px);
+    backdrop-filter: saturate(200%) blur(20px);
+    border: 1px solid var(--gold-border);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 0.5px rgba(212,160,23,0.1);
+    overflow: hidden;
+  }
+
+  /* Arrow tip */
+  .dropdown-inner::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px; height: 10px;
+    background: rgba(10, 8, 6, 0.88);
+    border-top: 1px solid var(--gold-border);
+    border-left: 1px solid var(--gold-border);
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .dropdown-item:hover {
+    background: var(--gold-subtle);
+  }
+
+  .item-icon {
+    color: var(--gold);
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    line-height: 1;
+    opacity: 0.8;
+  }
+
+  .item-title {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .item-desc {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: transparent;
+    border: 1px solid var(--gold-border);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .hamburger:hover {
+    background: var(--gold-subtle);
+    border-color: var(--gold);
+  }
+
+  .bar {
+    display: block;
+    width: 20px; height: 1.5px;
+    background: var(--gold-light);
+    border-radius: 2px;
+    transition: transform 0.35s var(--transition), opacity 0.25s;
+    transform-origin: center;
+  }
+
+  /* Animate to X */
+  .hamburger.open .bar-1 { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open .bar-2 { opacity: 0; transform: scaleX(0); }
+  .hamburger.open .bar-3 { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── Mobile Menu ── */
+  .mobile-menu {
+    display: none;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.45s var(--transition);
+    border-top: 1px solid transparent;
+  }
+
+  .mobile-menu.open {
+    max-height: 600px;
+    border-top-color: var(--gold-border);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 12px clamp(1rem, 4vw, 3rem) 20px;
+    gap: 2px;
+  }
+
+  .mobile-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgba(212,160,23,0.1);
+    transition: color 0.2s;
+  }
+  .mobile-link:last-child { border-bottom: none; }
+  .mobile-link:hover, .accordion-btn:hover { color: var(--gold-light); }
+
+  .accordion-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Accordion content */
+  .accordion-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s var(--transition);
+    padding-left: 12px;
+  }
+  .accordion-content.open { max-height: 300px; }
+
+  .mobile-sub-link {
+    display: block;
+    padding: 10px 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 1px solid var(--gold-border);
+    transition: color 0.2s, border-color 0.2s, padding-left 0.2s;
+  }
+  .mobile-sub-link:hover {
+    color: var(--gold-light);
+    border-left-color: var(--gold);
+    padding-left: 14px;
+  }
+
+  .mobile-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    padding: 13px 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a0804;
+    text-decoration: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+    box-shadow: 0 4px 20px rgba(212,160,23,0.3);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .desktop-nav { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: block; }
+  }
+
+  /* ── Google Fonts Import (add to your layout head) ── */
+  /* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600&display=swap'); */
+</style>
+
+<script>
+  // ── Scroll: add .scrolled class ──
+  const navbar = document.getElementById('navbar') as HTMLElement;
+  const onScroll = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ── Hamburger / Mobile Menu ──
+  const hamburger = document.getElementById('hamburger-btn') as HTMLButtonElement;
+  const mobileMenu = document.getElementById('mobile-menu') as HTMLElement;
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    navbar.classList.toggle('menu-open', isOpen);
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      navbar.classList.remove('menu-open');
+    });
+  });
+
+  // ── Mobile Accordion ──
+  const accordionBtn = document.getElementById('mobile-services-btn') as HTMLButtonElement;
+  const accordionContent = document.getElementById('mobile-services') as HTMLElement;
+
+  accordionBtn?.addEventListener('click', () => {
+    const isOpen = accordionContent.classList.toggle('open');
+    accordionBtn.setAttribute('aria-expanded', String(isOpen));
+    accordionContent.setAttribute('aria-hidden', String(!isOpen));
+    const chevron = accordionBtn.querySelector('.chevron') as SVGElement;
+    if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
+  });
+
+  // ── Mark active link ──
+  const links = document.querySelectorAll('.nav-link') as NodeListOf<HTMLAnchorElement>;
+  links.forEach(link => {
+    if (link.tagName === 'A' && link.getAttribute('href') === window.location.pathname) {
+      link.classList.add('active');
+    }
+  });
+
+  // ── Close dropdown on outside click ──
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    document.querySelectorAll('.dropdown-wrapper').forEach(wrapper => {
+      if (!wrapper.contains(target)) {
+        const trigger = wrapper.querySelector('.dropdown-trigger') as HTMLButtonElement;
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // ── Keyboard: open dropdown with Enter/Space ──
+  document.querySelectorAll('.dropdown-trigger').forEach(btn => {
+    btn.addEventListener('keydown', (e: Event) => {
+      const ke = e as KeyboardEvent;
+      if (ke.key === 'Enter' || ke.key === ' ') {
+        ke.preventDefault();
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+      }
+      if (ke.key === 'Escape') {
+        btn.setAttribute('aria-expanded', 'false');
+        (btn as HTMLElement).focus();
+      }
+    });
+  });
+</script>
