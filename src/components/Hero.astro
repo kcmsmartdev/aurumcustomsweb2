@@ -1,0 +1,25 @@
+---
+import VideoHero from "../assets/video/video-hero.mp4"
+
+const Slides = [
+    
+]
+
+---
+
+<div class="relative min-h-[95vh] w-full bg-amber-300 overflow-hidden">
+    <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+    <source src={VideoHero} type="video/mp4" />
+  </video>
+    <div class="absolute inset-0 bg-black/60"></div>
+</div>
+
+<script is:inline>
+    
+</script>

@@ -1,5 +1,6 @@
 ---
-import HeaderPc from "../components/HeaderPc.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <!doctype html>
@@ -12,9 +13,10 @@ import HeaderPc from "../components/HeaderPc.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
-	<body>
-		<HeaderPc />
+	<body class="relative">
+		<Navbar />
 		<slot />
+		<Footer />
 	</body>
 </html>
 

@@ -1,10 +1,19 @@
 {
   "name": "aurumcustomsweb2",
-  "type": "module",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
+  "description": "```sh\r npm create astro@latest -- --template basics\r ```",
+  "homepage": "https://github.com/kcmsmartdev/aurumcustomsweb2#readme",
+  "bugs": {
+    "url": "https://github.com/kcmsmartdev/aurumcustomsweb2/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcmsmartdev/aurumcustomsweb2.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -12,8 +21,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource-variable/roboto": "^5.2.10",
+    "@fontsource/poppins": "^5.2.7",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.1",
     "tailwindcss": "^4.2.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

@@ -1,1 +1,14 @@
+@import '@fontsource-variable/roboto/wght.css';
+@import '@fontsource/poppins';
 @import "tailwindcss";  
+
+@theme {
+    --color-transparente: #001133;
+    --color-Azul:#3775FF;
+    --color-Amarillo: #F9C401;
+    --color-Blanco: #fff;
+    --color-Negro: #000000;
+
+    --font-Roboto: 'Roboto Variable', sans-serif;
+    --font-Poppins: 'Poppins', sans-serif;
+}

@@ -1,0 +1,116 @@
+---
+import Logo  from "../../public/logo_aurum_customs.svg"
+import { Image } from "astro:assets";
+const CurrenPath = Astro.url.pathname;
+
+interface menu {
+    nombre: string,
+    href: string
+    children?: submenu[];
+}
+
+interface submenu{
+    nombre: string,
+    href: string,
+}
+
+const menu: menu[]= [
+  {nombre:"Inicio", href:"/" },
+  {nombre:"Sobre nosotros", href:"/sobre-nosotros"},
+  {nombre:"Servicios", href:"/servicio1" ,
+  children:[
+    {nombre: "Agenciamiento de aduanas especializado", href:"/servicios/agenciamiento-de-aduanas-especializado"},
+    {nombre: "Especializado Asesoría y Consultoría en Comercio Exterior", href:"/servicios/especializado-asesoria-y-consultoria-en-comercio-exterior"},
+    {nombre: "Servicios complementarios a su disposición", href:"/servicios/servicios-complementarios-a-su-disposicion"},
+  ]},
+
+  {nombre:"Tarifario", href:"/tarifario"},
+  {nombre:"Contacto", href:"/contacto"},
+  {nombre:"Tracking", href:"/tracking"}
+] 
+---
+<header class="fixed z-50 w-full mt-2">
+  <nav aria-label="Global"
+  class="mx-auto max-w-7xl flex items-center justify-between p-3  lg:px-8 bg-white/10 backdrop-blur-md shadow-lg rounded-4xl">
+
+    <div>
+      <a href="">
+        <Image src={Logo} alt="logo Aurum Customs" class="bg-cover bg-center"/>
+      </a>
+    </div>
+    <ul 
+      id="menu"
+      class="fixed top-0 left-0 w-full h-screen bg-black/90 flex flex-col items-center justify-end gap-6 text-white uppercase font-Roboto transition-transform duration-300 translate-x-full lg:translate-x-0 lg:static lg:h-auto lg:flex-row lg:bg-transparent">
+       
+          {
+            menu.map((e, index)=>{
+                
+                const esActivo = e.href === CurrenPath ||
+                (e.children &&
+                  e.children.some((sub)=> sub.href==CurrenPath)
+                )
+
+                const esUltimo = index === menu.length - 1;
+
+              return(
+                <li class="relative text-sm group">
+              <a
+                href={e.href}
+                class={`
+                  px-4 py-2 transition duration-300
+
+                  ${esUltimo 
+                    ? "px-12 py-4 rounded-3xl bg-Blanco border-2 border-transparent hover:bg-Negro hover:text-Blanco hover:font-bold"
+                    : ""
+                  }
+
+                  ${
+                    esUltimo
+                      ? "text-Negro"
+                      : esActivo
+                        ? "text-Amarillo font-bold"
+                        : "text-white/80 hover:text-Amarillo font-light"
+                  }
+                `}
+              >
+                {e.nombre}
+              </a>
+
+              {/* SUBMENU */}
+              {e.children && (
+                <ul class="absolute left-0 top-full mt-3 w-72 bg-white text-black rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-3 space-y-2 z-50">
+                  {e.children.map((sub) => (
+                    <li>
+                      <a
+                        href={sub.href}
+                        class="block px-4 py-2 rounded-lg hover:bg-gray-100 text-sm"
+                      >
+                        {sub.nombre}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+                          )
+
+            })
+          }
+     
+    </ul>
+
+    <button id="menu-btn" class="lg:hidden text-white text-2xl">
+      ☰
+    </button>
+  </nav>
+
+  
+
+  <script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
+
+  btn?.addEventListener("click", () => {
+    menu?.classList.toggle("translate-x-full");
+  });
+</script>
